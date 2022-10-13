@@ -8,7 +8,8 @@ RUN apt-get update
 
 RUN apt-get install -y \
     sudo \
-    wget
+    wget \
+    ffmpeg
 
 ## dart install
 RUN apt-get install apt-transport-https -y
