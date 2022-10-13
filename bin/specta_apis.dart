@@ -32,7 +32,7 @@ void main(List<String> arguments) async {
   app.get('/ws', (req, res) {
     return WebSocketSession(
       onOpen: (ws) {
-        ws.send(json.encode({"@type": "connected"}));
+        ws.sendJson(({"@type": "connected"}));
         users.add(ws);
         users.where((user) => user != ws).forEach((user) => user.send('A new user joined the chat.'));
       },
@@ -42,7 +42,7 @@ void main(List<String> arguments) async {
       },
       onMessage: (ws, dynamic data) async {
         if (data is String == false) {
-          return ws.send(json.encode({"@type": "error", "error_code": "data_must_be_json"}));
+          return ws.sendJson(({"@type": "error", "error_code": "data_must_be_json"}));
         }
         late Map jsonData = {};
         try {
@@ -50,7 +50,7 @@ void main(List<String> arguments) async {
         } catch (e) {}
 
         if (jsonData.isEmpty) {
-          return ws.send(json.encode({"@type": "error", "error_code": "data_must_be_not_empty"}));
+          return ws.sendJson(({"@type": "error", "error_code": "data_must_be_not_empty"}));
         }
         late String method = "";
 
@@ -59,17 +59,22 @@ void main(List<String> arguments) async {
         } catch (e) {}
 
         if (method.isEmpty) {
-          return ws.send(json.encode({
+          return ws.sendJson(({
             "@type": "error",
             "error_code": "method_must_be_not_empty",
           }));
         }
-        print(data);
-        ws.send(json.encode({"@type": "server"}));
+        ws.sendJson(({"@type": "server"}));
         users.forEach((user) => user.send(data));
       },
     );
   });
   //await run
   await app.listen(port, host);
+}
+
+extension WebSocketExts on WebSocket {
+  void sendJson(Map value) {
+    send(json.encode(value));
+  }
 }
