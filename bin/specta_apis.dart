@@ -27,12 +27,15 @@ void main(List<String> arguments) async {
   });
 
   var users = <WebSocket>[];
+  var computes = <WebSocket>[];
 
   // WebSocket chat relay implementation
   app.get('/ws', (req, res) {
     return WebSocketSession(
       onOpen: (ws) {
-        ws.sendJson(({"@type": "connected"}));
+        ws.sendJson(({
+          "@type": "connected",
+        }));
         users.add(ws);
         users.where((user) => user != ws).forEach((user) => user.send('A new user joined the chat.'));
       },
@@ -69,7 +72,51 @@ void main(List<String> arguments) async {
       },
     );
   });
-  //await run
+  
+
+  // WebSocket chat relay implementation
+  app.get('/compute', (req, res) {
+    return WebSocketSession(
+      onOpen: (ws) {
+        ws.sendJson(({
+          "@type": "connected",
+        }));
+        computes.add(ws);
+        computes.where((compute) => compute != ws).forEach((compute) => ws.send('A new user joined the chat.'));
+      },
+      onClose: (ws) {
+        computes.remove(ws);
+        computes.forEach((compute) => compute.send('A user has left.'));
+      },
+      onMessage: (ws, dynamic data) async {
+        if (data is String == false) {
+          return ws.sendJson(({"@type": "error", "error_code": "data_must_be_json"}));
+        }
+        late Map jsonData = {};
+        try {
+          jsonData = json.decode(data);
+        } catch (e) {}
+
+        if (jsonData.isEmpty) {
+          return ws.sendJson(({"@type": "error", "error_code": "data_must_be_not_empty"}));
+        }
+        late String method = "";
+
+        try {
+          method = jsonData["@type"];
+        } catch (e) {}
+
+        if (method.isEmpty) {
+          return ws.sendJson(({
+            "@type": "error",
+            "error_code": "method_must_be_not_empty",
+          }));
+        }
+        ws.sendJson(({"@type": "compute"})); 
+      },
+    );
+  });
+  
   await app.listen(port, host);
 }
 
