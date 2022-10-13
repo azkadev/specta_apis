@@ -174,7 +174,7 @@ void main(List<String> arguments) async {
         }));
       },
       onClose: (ws) {
-        computes.remove(ws);
+        computes.removeSocketClient(webSocket: ws);
       },
       onMessage: (ws, dynamic data) async {
         if (data is String == false) {
@@ -219,17 +219,21 @@ extension WebSocketClientDataExtension on List<SocketClient> {
     required WebSocket webSocket,
     bool withClose = false,
   }) {
-    for (var i = 0; i < length; i++) {
-      SocketClient socketClient = this[i];
-      if (socketClient.webSocket == webSocket) {
-        try {
-          webSocket.close();
-        } catch (e) {}
-        removeAt(i);
-        return true;
+    try {
+      for (var i = 0; i < length; i++) {
+        SocketClient socketClient = this[i];
+        if (socketClient.webSocket == webSocket) {
+          try {
+            webSocket.close();
+          } catch (e) {}
+          removeAt(i);
+          return true;
+        }
       }
+      return false;
+    } catch (e) {
+      return false;
     }
-    return false;
   }
 
   bool saveSocketClient({
