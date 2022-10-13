@@ -166,7 +166,7 @@ void main(List<String> arguments) async {
     );
   });
 
-  app.get('/bot', (req, res) {
+  app.get('/apps', (req, res) {
     return WebSocketSession(
       onOpen: (ws) {
         ws.sendJson(({
