@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:alfred/alfred.dart';
 import 'package:path/path.dart' as p;
@@ -73,8 +74,30 @@ void main(List<String> arguments) async {
             "error_code": "method_must_be_not_empty",
           }));
         }
+        if (method == "download") {
+          List<List<T>> chunk<T>(List<T> list, int chunkSize) {
+            List<List<T>> chunks = [];
+            int len = list.length;
+            for (var i = 0; i < len; i += chunkSize) {
+              int size = i + chunkSize;
+              chunks.add(list.sublist(i, size > len ? len : size));
+            }
+            return chunks;
+          }
+
+          File file = File("/home/hexaminate/Videos/video.mp4");
+          Uint8List bytes = await file.readAsBytes();
+
+          print(bytes.length);
+          List<List<int>> array = chunk(bytes, bytes.length ~/ 5000000);
+          for (var i = 0; i < array.length; i++) {
+            List<int> loop_data = array[i];
+            print("index: ${array.length - i}");
+            await Future.delayed(Duration(milliseconds: 1));
+            ws.send(loop_data);
+          }
+        }
         ws.sendJson(({"@type": "server"}));
-        users.forEach((user) => user.send(data));
       },
     );
   });
