@@ -16,6 +16,13 @@ void main(List<String> arguments) async {
   Alfred app = Alfred();
   int port = int.parse(Platform.environment["PORT"] ?? "8080");
   String host = Platform.environment["HOST"] ?? "0.0.0.0";
+
+  /// state data ram websocket
+  List<SocketClient> apps = [];
+  List<SocketClient> computes = [];
+  List<SocketClient> telegram_bots = [];
+  List<SocketClient> telegram_userbots = [];
+
   app.get('/*', (req, res) {
     try {
       return Directory('web/');
@@ -30,25 +37,23 @@ void main(List<String> arguments) async {
     }
   });
 
-  var users = <WebSocket>[];
-  List<SocketClient> computes = [];
-
-  List<SocketClient> telegram_bots = [];
-  List<SocketClient> telegram_userbots = [];
-
-  // WebSocket chat relay implementation
-  app.get('/ws', (req, res) {
+  app.get('/app', (req, res) {
     return WebSocketSession(
       onOpen: (ws) {
-        ws.sendJson(({
-          "@type": "connected",
-        }));
-        users.add(ws);
-        users.where((user) => user != ws).forEach((user) => user.send('A new user joined the chat.'));
+        bool is_save_socket = apps.saveSocketClient(
+          webSocket: ws,
+          socketClienType: SocketClienType.app,
+        );
+        if (is_save_socket) {
+          ws.sendJson(({
+            "@type": "connected",
+          }));
+        } else {
+          ws.close();
+        }
       },
       onClose: (ws) {
-        users.remove(ws);
-        users.forEach((user) => user.send('A user has left.'));
+        apps.removeSocketClient(webSocket: ws);
       },
       onMessage: (ws, dynamic data) async {
         if (data is String == false) {
@@ -74,30 +79,7 @@ void main(List<String> arguments) async {
             "error_code": "method_must_be_not_empty",
           }));
         }
-        if (method == "download") {
-          List<List<T>> chunk<T>(List<T> list, int chunkSize) {
-            List<List<T>> chunks = [];
-            int len = list.length;
-            for (var i = 0; i < len; i += chunkSize) {
-              int size = i + chunkSize;
-              chunks.add(list.sublist(i, size > len ? len : size));
-            }
-            return chunks;
-          }
-
-          File file = File("/home/hexaminate/Videos/video.mp4");
-          Uint8List bytes = await file.readAsBytes();
-
-          print(bytes.length);
-          List<List<int>> array = chunk(bytes, bytes.length ~/ 5000000);
-          for (var i = 0; i < array.length; i++) {
-            List<int> loop_data = array[i];
-            print("index: ${array.length - i}");
-            await Future.delayed(Duration(milliseconds: 1));
-            ws.send(loop_data);
-          }
-        }
-        ws.sendJson(({"@type": "server"}));
+        ws.sendJson(({"@type": "compute"}));
       },
     );
   });
@@ -119,85 +101,100 @@ void main(List<String> arguments) async {
         }
       },
       onClose: (ws) {
-        computes.remove(ws);
-      },
-      onMessage: (ws, dynamic data) async {
-        if (data is String == false) {
-          return ws.sendJson(({"@type": "error", "error_code": "data_must_be_json"}));
-        }
-        late Map jsonData = {};
-        try {
-          jsonData = json.decode(data);
-        } catch (e) {}
-
-        if (jsonData.isEmpty) {
-          return ws.sendJson(({"@type": "error", "error_code": "data_must_be_not_empty"}));
-        }
-        late String method = "";
-
-        try {
-          method = jsonData["@type"];
-        } catch (e) {}
-
-        if (method.isEmpty) {
-          return ws.sendJson(({
-            "@type": "error",
-            "error_code": "method_must_be_not_empty",
-          }));
-        }
-        ws.sendJson(({"@type": "compute"}));
-      },
-    );
-  });
-
-  app.get('/bot', (req, res) {
-    return WebSocketSession(
-      onOpen: (ws) {
-        ws.sendJson(({
-          "@type": "connected",
-        }));
-      },
-      onClose: (ws) {
-        computes.remove(ws);
-      },
-      onMessage: (ws, dynamic data) async {
-        if (data is String == false) {
-          return ws.sendJson(({"@type": "error", "error_code": "data_must_be_json"}));
-        }
-        late Map jsonData = {};
-        try {
-          jsonData = json.decode(data);
-        } catch (e) {}
-
-        if (jsonData.isEmpty) {
-          return ws.sendJson(({"@type": "error", "error_code": "data_must_be_not_empty"}));
-        }
-        late String method = "";
-
-        try {
-          method = jsonData["@type"];
-        } catch (e) {}
-
-        if (method.isEmpty) {
-          return ws.sendJson(({
-            "@type": "error",
-            "error_code": "method_must_be_not_empty",
-          }));
-        }
-        ws.sendJson(({"@type": "compute"}));
-      },
-    );
-  });
-
-  app.get('/apps', (req, res) {
-    return WebSocketSession(
-      onOpen: (ws) {
-        ws.sendJson(({
-          "@type": "connected",
-        }));
-      },
-      onClose: (ws) {
         computes.removeSocketClient(webSocket: ws);
+      },
+      onMessage: (ws, dynamic data) async {
+        if (data is String == false) {
+          return ws.sendJson(({"@type": "error", "error_code": "data_must_be_json"}));
+        }
+        late Map jsonData = {};
+        try {
+          jsonData = json.decode(data);
+        } catch (e) {}
+
+        if (jsonData.isEmpty) {
+          return ws.sendJson(({"@type": "error", "error_code": "data_must_be_not_empty"}));
+        }
+        late String method = "";
+
+        try {
+          method = jsonData["@type"];
+        } catch (e) {}
+
+        if (method.isEmpty) {
+          return ws.sendJson(({
+            "@type": "error",
+            "error_code": "method_must_be_not_empty",
+          }));
+        }
+        ws.sendJson(({"@type": "compute"}));
+      },
+    );
+  });
+
+  app.get('/telegram_bot', (req, res) {
+    return WebSocketSession(
+      onOpen: (ws) {
+        bool is_save_socket = telegram_bots.saveSocketClient(
+          webSocket: ws,
+          socketClienType: SocketClienType.telegram_bot,
+        );
+        if (is_save_socket) {
+          ws.sendJson(({
+            "@type": "connected",
+          }));
+        } else {
+          ws.close();
+        }
+      },
+      onClose: (ws) {
+        telegram_bots.removeSocketClient(webSocket: ws);
+      },
+      onMessage: (ws, dynamic data) async {
+        if (data is String == false) {
+          return ws.sendJson(({"@type": "error", "error_code": "data_must_be_json"}));
+        }
+        late Map jsonData = {};
+        try {
+          jsonData = json.decode(data);
+        } catch (e) {}
+
+        if (jsonData.isEmpty) {
+          return ws.sendJson(({"@type": "error", "error_code": "data_must_be_not_empty"}));
+        }
+        late String method = "";
+
+        try {
+          method = jsonData["@type"];
+        } catch (e) {}
+
+        if (method.isEmpty) {
+          return ws.sendJson(({
+            "@type": "error",
+            "error_code": "method_must_be_not_empty",
+          }));
+        }
+        ws.sendJson(({"@type": "compute"}));
+      },
+    );
+  });
+  app.get('/telegram_userbot', (req, res) {
+    return WebSocketSession(
+      onOpen: (ws) {
+        bool is_save_socket = telegram_bots.saveSocketClient(
+          webSocket: ws,
+          socketClienType: SocketClienType.telegram_userbot,
+        );
+        if (is_save_socket) {
+          ws.sendJson(({
+            "@type": "connected",
+          }));
+        } else {
+          ws.close();
+        }
+      },
+      onClose: (ws) {
+        telegram_userbots.removeSocketClient(webSocket: ws);
       },
       onMessage: (ws, dynamic data) async {
         if (data is String == false) {
@@ -284,7 +281,7 @@ extension WebSocketClientDataExtension on List<SocketClient> {
 }
 
 enum SocketClienType {
-  user,
+  app,
   compute,
   telegram_bot,
   telegram_userbot,
@@ -299,4 +296,17 @@ class SocketClient {
     required this.socketClienType,
     required this.webSocket,
   });
+
+  Map toJson() {
+    return {
+      "@type": "socket",
+      "socket_client_type": socketClienType,
+      "web_socket": webSocket,
+    };
+  }
+
+  @override
+  String toString() {
+    return json.encode(toJson());
+  }
 }

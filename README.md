@@ -21,10 +21,15 @@
 
 # Specta Apis 🔥
 
+> Specta apis untuk handle backend dari specta compute, specta bot dan untuk specta app
+
 ## Demo / Quick overview
 
 ## Status
 > belum siap di run public
+
+## Status script
+> sudah di test di local tinggal bikin style code agar mudah di develop semua orang
 
 ---
 ## run
