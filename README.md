@@ -23,6 +23,19 @@
 
 > Specta apis untuk handle backend dari specta compute, specta bot dan untuk specta app
 
+[![](https://img.shields.io/badge/specta_apis-v0.0-darkgreen)](#)
+[![Stars](https://img.shields.io/github/stars/azkadev/specta_apis?style=flat-square&color=yellow)](https://github.com/azkadev/specta_apis/stargazers)
+[![Forks](https://img.shields.io/github/forks/azkadev/specta_apis?style=flat-square&color=orange)](https://github.com/azkadev/specta_apis/fork)
+[![Size](https://img.shields.io/github/repo-size/azkadev/specta_apis?style=flat-square&color=green)](https://github.com/azkadev/specta_apis/)  
+[![CodeFactor](https://www.codefactor.io/repository/github/azkadev/specta_apis/badge/main)](https://www.codefactor.io/repository/github/azkadev/specta_apis/overview/main)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/azkadev/specta_apis/graphs/commit-activity) 
+[![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/azkadev/specta_apis)
+[![Contributors](https://img.shields.io/github/contributors/azkadev/specta_apis?style=flat-square&color=green)](https://github.com/azkadev/specta_apis/graphs/contributors)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
+[![License](https://img.shields.io/badge/License-AGPL-blue)](https://github.com/azkadev/specta_apis/blob/main/LICENSE)
+
+---
+
 ## Demo / Quick overview
 
 ## Status
