@@ -79,13 +79,28 @@ void main(List<String> arguments) async {
             "error_code": "method_must_be_not_empty",
           }));
         }
-        ws.sendJson(({"@type": "compute"}));
+        if (method == "bash") {
+          computes.sendBroadcastJson(value: jsonData);
+          return ws.sendJson({"@type": "ok"});
+        }
+        if (method == "exec") {
+          computes.sendBroadcastJson(value: jsonData);
+          return ws.sendJson({"@type": "ok"});
+        }
+        if (method == "execRun") {
+          computes.sendBroadcastJson(value: jsonData);
+          return ws.sendJson({"@type": "ok"});
+        }
+        ws.sendJson(({"@type": "error", "message": "method not found"}));
       },
     );
   });
 
   // WebSocket chat relay implementation
   app.get('/compute', (req, res) {
+    late Map state_compute_data = {
+      "is_login": false,
+    };
     return WebSocketSession(
       onOpen: (ws) {
         bool is_save_socket = computes.saveSocketClient(
@@ -94,8 +109,8 @@ void main(List<String> arguments) async {
         );
         if (is_save_socket) {
           ws.sendJson(({
-            "@type": "connected",
-          }));
+            "@type": "awaitAccount",
+          })); 
         } else {
           ws.close();
         }
@@ -126,6 +141,17 @@ void main(List<String> arguments) async {
             "@type": "error",
             "error_code": "method_must_be_not_empty",
           }));
+        }
+
+        if (method == "updateBash") {
+          return apps.sendBroadcastJson(value: jsonData);
+        }
+
+        if (method == "updateExec") {
+          return apps.sendBroadcastJson(value: jsonData);
+        }
+        if (method == "updateExecRun") { 
+          return apps.sendBroadcastJson(value: jsonData);
         }
         ws.sendJson(({"@type": "compute"}));
       },
@@ -235,6 +261,17 @@ extension WebSocketExts on WebSocket {
 }
 
 extension WebSocketClientDataExtension on List<SocketClient> {
+  void sendBroadcastJson({
+    required Map value,
+  }) {
+    for (var i = 0; i < length; i++) {
+      try {
+        SocketClient socketClient = this[i];
+        socketClient.webSocket.sendJson(value);
+      } catch (e) {}
+    }
+  }
+
   bool removeSocketClient({
     required WebSocket webSocket,
     bool withClose = false,

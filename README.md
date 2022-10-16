@@ -92,7 +92,7 @@
 
 ## License
 [![License](https://www.gnu.org/graphics/agplv3-155x51.png)](LICENSE)   
-Specta Userbot Telegram is licensed under [GNU Affero General Public License](https://www.gnu.org/licenses/agpl-3.0.en.html) v3 or later.
+Specta Api is licensed under [GNU Affero General Public License](https://www.gnu.org/licenses/agpl-3.0.en.html) v3 or later.
 
 
 ### Copyright & License 👮
