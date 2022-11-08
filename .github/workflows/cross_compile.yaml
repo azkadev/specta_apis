@@ -1,0 +1,51 @@
+name: Compile Cross platform
+on: [workflow_dispatch]
+
+jobs:
+  build:
+    name: Compile Program dart cross platform @azkadev
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        include:
+          - os: ubuntu-latest
+            output-name: linux
+          - os: macOS-latest
+            output-name: macos
+          - os: windows-latest
+            output-name: windows
+
+    steps:
+      - name: Export Release Timestamp
+        run: echo "APP_VERSION=v$(date +'%Y.%m.%d.%H.%M.%S')" >> $GITHUB_ENV
+      - name: Checkout repository
+        uses: actions/checkout@v1
+      - name: Set up Dart
+        uses: cedx/setup-dart@v3
+        with:
+          architecture: x64
+          release-channel: stable
+          version: latest
+      - name: check dart version
+        run: dart --version
+      - name: Install pub Dependencies
+        run: dart pub get
+      - name: Mkdir build
+        run: mkdir build
+      - name: Compile dart to exe
+        run: dart compile exe ./bin/${{ github.event.repository.name }}.dart -o build/${{ github.event.repository.name }}_${{ matrix.output-name }}_${{ runner.arch	 }}
+      - name: Publish artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Artifact
+          path: build/*
+      - name: Publish Release
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: "${{ github.token }}"
+          automatic_release_tag: "latest-${{ matrix.output-name }}"
+          prerelease: false
+          title: "Release ${{ matrix.output-name }}"
+          files: |
+            build/*
