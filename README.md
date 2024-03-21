@@ -1,100 +1,74 @@
-<p align="center">
-    <a href="https://github.com/azkadev">
-        <img src="https://telegra.ph/file/e90bdeab8390b8c0d9df2.png" alt="Specta"
-            width="312"
-            height="312">
-    </a>
-    <br>
-    <a href="https://youtube.com/c/galaxeus">
-        <img
-            src="https://raw.githubusercontent.com/azkadev/azkadev/main/assets/images/powered_galaxeus.png"
-            alt="galaxeus"
-            width="350"
-            height="80"
-        >
-    </a>
-    <br>
-    <b>Specta Apis</b>
-    <br>
-</p>
- 
+PHAgYWxpZ249ImNlbnRlciI+CiAgICA8YSBocmVmPSJodHRwczovL2dpdGh1
+Yi5jb20vYXprYWRldiI+CiAgICAgICAgPGltZyBzcmM9Imh0dHBzOi8vdGVs
+ZWdyYS5waC9maWxlL2U5MGJkZWFiODM5MGI4YzBkOWRmMi5wbmciIGFsdD0i
+U3BlY3RhIgogICAgICAgICAgICB3aWR0aD0iMzEyIgogICAgICAgICAgICBo
+ZWlnaHQ9IjMxMiI+CiAgICA8L2E+CiAgICA8YnI+CiAgICA8YSBocmVmPSJo
+dHRwczovL3lvdXR1YmUuY29tL2MvZ2FsYXhldXMiPgogICAgICAgIDxpbWcK
+ICAgICAgICAgICAgc3JjPSJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVu
+dC5jb20vYXprYWRldi9hemthZGV2L21haW4vYXNzZXRzL2ltYWdlcy9wb3dl
+cmVkX2dhbGF4ZXVzLnBuZyIKICAgICAgICAgICAgYWx0PSJnYWxheGV1cyIK
+ICAgICAgICAgICAgd2lkdGg9IjM1MCIKICAgICAgICAgICAgaGVpZ2h0PSI4
+MCIKICAgICAgICA+CiAgICA8L2E+CiAgICA8YnI+CiAgICA8Yj5TcGVjdGEg
+QXBpczwvYj4KICAgIDxicj4KPC9wPgogCgojIFNwZWN0YSBBcGlzIPCflKUK
+Cj4gU3BlY3RhIGFwaXMgdW50dWsgaGFuZGxlIGJhY2tlbmQgZGFyaSBzcGVj
+dGEgY29tcHV0ZSwgc3BlY3RhIGJvdCBkYW4gdW50dWsgc3BlY3RhIGFwcAoK
+WyFbXShodHRwczovL2ltZy5zaGllbGRzLmlvL2JhZGdlL3NwZWN0YV9hcGlz
+LXYwLjAtZGFya2dyZWVuKV0oIykKWyFbU3RhcnNdKGh0dHBzOi8vaW1nLnNo
+aWVsZHMuaW8vZ2l0aHViL3N0YXJzL2F6a2FkZXYvc3BlY3RhX2FwaXM/c3R5
+bGU9ZmxhdC1zcXVhcmUmY29sb3I9eWVsbG93KV0oaHR0cHM6Ly9naXRodWIu
+Y29tL2F6a2FkZXYvc3BlY3RhX2FwaXMvc3RhcmdhemVycykKWyFbRm9ya3Nd
+KGh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vZ2l0aHViL2ZvcmtzL2F6a2FkZXYv
+c3BlY3RhX2FwaXM/c3R5bGU9ZmxhdC1zcXVhcmUmY29sb3I9b3JhbmdlKV0o
+aHR0cHM6Ly9naXRodWIuY29tL2F6a2FkZXYvc3BlY3RhX2FwaXMvZm9yaykK
+WyFbU2l6ZV0oaHR0cHM6Ly9pbWcuc2hpZWxkcy5pby9naXRodWIvcmVwby1z
+aXplL2F6a2FkZXYvc3BlY3RhX2FwaXM/c3R5bGU9ZmxhdC1zcXVhcmUmY29s
+b3I9Z3JlZW4pXShodHRwczovL2dpdGh1Yi5jb20vYXprYWRldi9zcGVjdGFf
+YXBpcy8pICAKWyFbQ29kZUZhY3Rvcl0oaHR0cHM6Ly93d3cuY29kZWZhY3Rv
+ci5pby9yZXBvc2l0b3J5L2dpdGh1Yi9hemthZGV2L3NwZWN0YV9hcGlzL2Jh
+ZGdlL21haW4pXShodHRwczovL3d3dy5jb2RlZmFjdG9yLmlvL3JlcG9zaXRv
+cnkvZ2l0aHViL2F6a2FkZXYvc3BlY3RhX2FwaXMvb3ZlcnZpZXcvbWFpbikK
+WyFbTWFpbnRlbmFuY2VdKGh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vYmFkZ2Uv
+TWFpbnRhaW5lZCUzRi15ZXMtZ3JlZW4uc3ZnKV0oaHR0cHM6Ly9naXRodWIu
+Y29tL2F6a2FkZXYvc3BlY3RhX2FwaXMvZ3JhcGhzL2NvbW1pdC1hY3Rpdml0
+eSkgClshW09wZW4gU291cmNlIExvdmUgc3ZnMl0oaHR0cHM6Ly9iYWRnZXMu
+ZnJhcHNvZnQuY29tL29zL3YyL29wZW4tc291cmNlLnN2Zz92PTEwMyldKGh0
+dHBzOi8vZ2l0aHViLmNvbS9hemthZGV2L3NwZWN0YV9hcGlzKQpbIVtDb250
+cmlidXRvcnNdKGh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vZ2l0aHViL2NvbnRy
+aWJ1dG9ycy9hemthZGV2L3NwZWN0YV9hcGlzP3N0eWxlPWZsYXQtc3F1YXJl
+JmNvbG9yPWdyZWVuKV0oaHR0cHM6Ly9naXRodWIuY29tL2F6a2FkZXYvc3Bl
+Y3RhX2FwaXMvZ3JhcGhzL2NvbnRyaWJ1dG9ycykKWyFbUFJzIFdlbGNvbWVd
+KGh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vYmFkZ2UvUFJzLXdlbGNvbWUtYnJp
+Z2h0Z3JlZW4uc3ZnP3N0eWxlPWZsYXQtc3F1YXJlKV0oaHR0cHM6Ly9tYWtl
+YXB1bGxyZXF1ZXN0LmNvbSkKWyFbTGljZW5zZV0oaHR0cHM6Ly9pbWcuc2hp
+ZWxkcy5pby9iYWRnZS9MaWNlbnNlLUFHUEwtYmx1ZSldKGh0dHBzOi8vZ2l0
+aHViLmNvbS9hemthZGV2L3NwZWN0YV9hcGlzL2Jsb2IvbWFpbi9MSUNFTlNF
+KQoKLS0tCgojIyBEZW1vIC8gUXVpY2sgb3ZlcnZpZXcKCiMjIFN0YXR1cwo+
+IGJlbHVtIHNpYXAgZGkgcnVuIHB1YmxpYwoKIyMgU3RhdHVzIHNjcmlwdAo+
+IHN1ZGFoIGRpIHRlc3QgZGkgbG9jYWwgdGluZ2dhbCBiaWtpbiBzdHlsZSBj
+b2RlIGFnYXIgbXVkYWggZGkgZGV2ZWxvcCBzZW11YSBvcmFuZwoKLS0tCiMj
+IHJ1bgoKMS4gQ2xvbmUgcmVwbyBmaXJzdAogICBgYGBiYXNoCiAgIGdpdCBj
+bG9uZSBodHRwczovL2dpdGh1Yi5jb20vYXprYWRldi9zcGVjdGFfYXBpcy5n
+aXQKICAgY2Qgc3BlY3RhX2FwaXMKICAgYGBgCgoyLiBSdW4gd2l0aCBEb2Nr
+ZXIKICAgYGBgYmFzaAogICBkb2NrZXIgYnVpbGQgLiAtdCBzcGVjdGFfYXBp
+cwogICBkb2NrZXIgcnVuIC1pdCBzcGVjdGFfYXBpcwogICBgYGAKMy4gUnVu
+IHdpdGggZGFydAogICBgYGBiYXNoCiAgIGRhcnQgcHViIGdldAogICBkYXJ0
+IHJ1bgogICBgYGAKCjQuIHJ1biBuYXRpdmUgZXhlCiAgICBgYGBiYXNoCiAg
+ICBkYXJ0IHB1YiBnZXQKICAgIGRhcnQgY29tcGlsZSBleGUgLi9iaW4vc3Bl
+Y3RhX2FwaXMuZGFydCAtbyAuL2luZGV4CiAgICBjaG1vZCA3NzcgLi9pbmRl
+eAogICAgLi9pbmRleAogICAgYGBgCi0tLQoKIyMjIEZlYXR1cmVzCgoxLiBb
+eF0gLgoyLiBbIF0gLgozLiBbIF0gLgo0LiBbIF0gLgo1LiBbIF0gLgo2LiBb
+IF0gLgo3LiBbIF0gLgo4LiBbIF0gLgo5LiBbIF0gLgoKIyMjIFN1cHBvcnQg
+JiBEaXNrdXNpIPCfkaUKCj4gW0Rpc2N1c3Npb24gR3JvdXBdKGh0dHBzOi8v
+dC5tZS9kZXZlbG9wZXJfYmFzZV9ncm91bmQpIGFuZCBbRGV2ZWxvcGVyIENo
+YW5uZWxdKGh0dHBzOi8vdC5tZS9hemthZGV2KQoKCiMjIExpY2Vuc2UKWyFb
+TGljZW5zZV0oaHR0cHM6Ly93d3cuZ251Lm9yZy9ncmFwaGljcy9hZ3BsdjMt
+MTU1eDUxLnBuZyldKExJQ0VOU0UpICAgClNwZWN0YSBBcGkgaXMgbGljZW5z
+ZWQgdW5kZXIgW0dOVSBBZmZlcm8gR2VuZXJhbCBQdWJsaWMgTGljZW5zZV0o
+aHR0cHM6Ly93d3cuZ251Lm9yZy9saWNlbnNlcy9hZ3BsLTMuMC5lbi5odG1s
+KSB2MyBvciBsYXRlci4KCgojIyMgQ29weXJpZ2h0ICYgTGljZW5zZSDwn5Gu
+CgoqIENvcHlyaWdodCAoQykgMjAyMiBieSBbQXprYWRldl0oaHR0cHM6Ly9n
+aXRodWIuY29tL2F6a2FkZXYpIOKdpO+4j++4jw==
 
-# Specta Apis 🔥
-
-> Specta apis untuk handle backend dari specta compute, specta bot dan untuk specta app
-
-[![](https://img.shields.io/badge/specta_apis-v0.0-darkgreen)](#)
-[![Stars](https://img.shields.io/github/stars/azkadev/specta_apis?style=flat-square&color=yellow)](https://github.com/azkadev/specta_apis/stargazers)
-[![Forks](https://img.shields.io/github/forks/azkadev/specta_apis?style=flat-square&color=orange)](https://github.com/azkadev/specta_apis/fork)
-[![Size](https://img.shields.io/github/repo-size/azkadev/specta_apis?style=flat-square&color=green)](https://github.com/azkadev/specta_apis/)  
-[![CodeFactor](https://www.codefactor.io/repository/github/azkadev/specta_apis/badge/main)](https://www.codefactor.io/repository/github/azkadev/specta_apis/overview/main)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/azkadev/specta_apis/graphs/commit-activity) 
-[![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/azkadev/specta_apis)
-[![Contributors](https://img.shields.io/github/contributors/azkadev/specta_apis?style=flat-square&color=green)](https://github.com/azkadev/specta_apis/graphs/contributors)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
-[![License](https://img.shields.io/badge/License-AGPL-blue)](https://github.com/azkadev/specta_apis/blob/main/LICENSE)
-
----
-
-## Demo / Quick overview
-
-## Status
-> belum siap di run public
-
-## Status script
-> sudah di test di local tinggal bikin style code agar mudah di develop semua orang
-
----
-## run
-
-1. Clone repo first
-   ```bash
-   git clone https://github.com/azkadev/specta_apis.git
-   cd specta_apis
-   ```
-
-2. Run with Docker
-   ```bash
-   docker build . -t specta_apis
-   docker run -it specta_apis
-   ```
-3. Run with dart
-   ```bash
-   dart pub get
-   dart run
-   ```
-
-4. run native exe
-    ```bash
-    dart pub get
-    dart compile exe ./bin/specta_apis.dart -o ./index
-    chmod 777 ./index
-    ./index
-    ```
----
-
-### Features
-
-1. [x] .
-2. [ ] .
-3. [ ] .
-4. [ ] .
-5. [ ] .
-6. [ ] .
-7. [ ] .
-8. [ ] .
-9. [ ] .
-
-### Support & Diskusi 👥
-
-> [Discussion Group](https://t.me/developer_base_ground) and [Developer Channel](https://t.me/azkadev)
-
-
-## License
-[![License](https://www.gnu.org/graphics/agplv3-155x51.png)](LICENSE)   
-Specta Api is licensed under [GNU Affero General Public License](https://www.gnu.org/licenses/agpl-3.0.en.html) v3 or later.
-
-
-### Copyright & License 👮
-
-* Copyright (C) 2022 by [Azkadev](https://github.com/azkadev) ❤️️
+<!-- START GLOBAL CORPORATION -->
+404: Not Found
+<!-- END GLOBAL CORPORATION -->
